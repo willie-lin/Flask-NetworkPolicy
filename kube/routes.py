@@ -10,12 +10,14 @@
 """
 from pprint import pprint
 
-from kube import network_policy
+from kube import network_policy, db
 from flask import render_template,request
 from kube.forms import NetworkPolicyForm
 import kubernetes
 from kubernetes import client
 from kubernetes.client.rest import ApiException
+
+from kube.models import NetworkPolicy
 from utils.data_processing import data_body
 
 
@@ -38,14 +40,21 @@ def create_network_policy():
     api_instance = kubernetes.client.ExtensionsV1beta1Api(kubernetes.client.ApiClient(configuration))
     form = NetworkPolicyForm()
     data = request.form.to_dict()
-    namespace = 'default'  # str | object name and auth scope, such as for teams and projects
-    body = data_body(data) # V1NetworkPolicy |
-    print(body)
-
-    try:
-        api_response = api_instance.create_namespaced_network_policy(namespace, body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling NetworkingV1Api->create_namespaced_network_policy: %s\n" % e)
+    if form.validate_on_submit():
+        policy = NetworkPolicy(name=form.name.data, namespace=form.namespaces.data,
+                               cidr=form.cidr.data, excepts=form.excepts.data,
+                               port=form.port.data, protocol=form.protocol.data,
+                               project=form.project.data, role=form.role.data,
+                               spec_pod=form.spec_pod.data, policy_type=form.policy_type.data)
+        db.session.add(policy)
+        db.session.commit()
+        namespace = form.namespaces.data   # str | object name and auth scope, such as for teams and projects
+        body = data_body(data) # V1NetworkPolicy |
+        print(body)
+        try:
+            api_response = api_instance.create_namespaced_network_policy(namespace, body)
+            pprint(api_response)
+        except ApiException as e:
+            print("Exception when calling NetworkingV1Api->create_namespaced_network_policy: %s\n" % e)
 
     return render_template('index.html', title='NetworkPolicy', form=form)
