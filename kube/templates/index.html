@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+    <h1>Create Network Policy</h1>
+    <div class="row">
+        <div class="col-md-12">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+{#    <form action="" method="post" novalidate>#}
+{#        {{ form.hidden_tag() }}#}
+{#        <p>#}
+{#            {{ form.name.label }}<br>#}
+{#            {{ form.name(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.name.label }}<br>#}
+{#            {{ form.namespaces(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.podSelector.label }}<br>#}
+{#            {{ form.podSelector(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.policyTypes.label }}<br>#}
+{#            {{ form.policyTypes(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.ingress_cidr.label }}<br>#}
+{#            {{ form.ingress_cidr(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.ingress_excepts.label }}<br>#}
+{#            {{ form.ingress_excepts(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.ingress_namespaceSelector.label }}<br>#}
+{#            {{ form.ingress_namespaceSelector(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.ingress_podSelector.label }}<br>#}
+{#            {{ form.ingress_podSelector(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.ingress_ports.label }}<br>#}
+{#            {{ form.ingress_ports(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.egress_ipBlock.label }}<br>#}
+{#            {{ form.egress_ipBlock(size=32) }}#}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.egress_ports.label }}<br>#}
+{#            {{ form.egress_ports(size=32) }}#}
+{#        </p>#}
+{#        <p>{{ form.submit() }}</p>#}
+{#    </form>#}
+{% endblock %}
