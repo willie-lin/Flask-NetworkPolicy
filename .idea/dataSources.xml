@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="kubernetes" uuid="caa0401f-4007-47ab-afa5-e27d854b6a97">
+    <data-source source="LOCAL" name="kubernetes" uuid="da3fe714-4ab0-4ad7-8983-1182ef9493e7">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\PycharmProjects\Flask-NetworkPolicy\kubernetes.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/kubernetes.db</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>

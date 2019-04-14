@@ -9,4 +9,4 @@
 # @Project Flask-NetworkPolicy 
 """
 
-from kube import network_policy
+from kube import create_app
