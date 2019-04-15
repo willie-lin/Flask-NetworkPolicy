@@ -37,6 +37,9 @@ def create_app(config_class=Config):
     migrate.init_app(network_policy, db)
     bootstrap.init_app(network_policy)
 
+    from kube.policy import bp as policy
+    network_policy.register_blueprint(policy, url_prefix='/policy')
+
     from kube.api import bp as api_bp
     network_policy.register_blueprint(api_bp, url_prefix='/api')
 
