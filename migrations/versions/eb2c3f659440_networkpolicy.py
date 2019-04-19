@@ -1,8 +1,8 @@
-"""network-policy
+"""networkpolicy
 
-Revision ID: cab701a1c3e6
+Revision ID: eb2c3f659440
 Revises: 
-Create Date: 2019-04-10 20:18:23.517000
+Create Date: 2019-04-19 13:29:07.443000
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'cab701a1c3e6'
+revision = 'eb2c3f659440'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,16 +32,16 @@ def upgrade():
     sa.Column('policy_type', sa.String(length=64), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_network_policy_cidr'), 'network_policy', ['cidr'], unique=True)
-    op.create_index(op.f('ix_network_policy_excepts'), 'network_policy', ['excepts'], unique=True)
+    op.create_index(op.f('ix_network_policy_cidr'), 'network_policy', ['cidr'], unique=False)
+    op.create_index(op.f('ix_network_policy_excepts'), 'network_policy', ['excepts'], unique=False)
     op.create_index(op.f('ix_network_policy_name'), 'network_policy', ['name'], unique=True)
-    op.create_index(op.f('ix_network_policy_namespace'), 'network_policy', ['namespace'], unique=True)
-    op.create_index(op.f('ix_network_policy_policy_type'), 'network_policy', ['policy_type'], unique=True)
-    op.create_index(op.f('ix_network_policy_port'), 'network_policy', ['port'], unique=True)
-    op.create_index(op.f('ix_network_policy_project'), 'network_policy', ['project'], unique=True)
-    op.create_index(op.f('ix_network_policy_protocol'), 'network_policy', ['protocol'], unique=True)
-    op.create_index(op.f('ix_network_policy_role'), 'network_policy', ['role'], unique=True)
-    op.create_index(op.f('ix_network_policy_spec_pod'), 'network_policy', ['spec_pod'], unique=True)
+    op.create_index(op.f('ix_network_policy_namespace'), 'network_policy', ['namespace'], unique=False)
+    op.create_index(op.f('ix_network_policy_policy_type'), 'network_policy', ['policy_type'], unique=False)
+    op.create_index(op.f('ix_network_policy_port'), 'network_policy', ['port'], unique=False)
+    op.create_index(op.f('ix_network_policy_project'), 'network_policy', ['project'], unique=False)
+    op.create_index(op.f('ix_network_policy_protocol'), 'network_policy', ['protocol'], unique=False)
+    op.create_index(op.f('ix_network_policy_role'), 'network_policy', ['role'], unique=False)
+    op.create_index(op.f('ix_network_policy_spec_pod'), 'network_policy', ['spec_pod'], unique=False)
     # ### end Alembic commands ###
 
 

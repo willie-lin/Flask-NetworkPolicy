@@ -49,7 +49,12 @@ def create_network_policy():
                                spec_pod=form.spec_pod.data, policy_type=form.policy_type.data)
         db.session.add(policy)
         db.session.commit()
-        namespace = form.namespaces.data   # str | object name and auth scope, such as for teams and projects
+        print(11111)
+        namespace = form.namespaces.data
+
+        print(namespace)
+        print(2222)
+        # str | object name and auth scope, such as for teams and projects
         body = data_body(data) # V1NetworkPolicy |
         print(body)
         try:

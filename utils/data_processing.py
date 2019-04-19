@@ -24,6 +24,7 @@ def data_body(data):
     excepts = data.get('excepts')
     d = {'cidr': cidr}
     d.setdefault('except', []).append(excepts)
+
     ip_block = {
         "ipBlock": d
     }
@@ -96,7 +97,8 @@ def data_body(data):
     # name = "test-04-10-network-policy"
     name = data.get('name')
     # namespace = 'default'
-    namespace = data.get('namespace')
+    namespace = data.get('namespaces')
+    print(namespace)
     metadata = utils.V1ObjectMeta(name=name, namespace=namespace)
     api_version = 'extensions/v1beta1'
     kind = 'NetworkPolicy'
