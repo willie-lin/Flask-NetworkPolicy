@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=C:\PycharmProjects\Flask-NetworkPolicy\venv"
+set "VIRTUAL_ENV=Y:\PycharmProjects\Flask-NetworkPolicy\venv"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"
